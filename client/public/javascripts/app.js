@@ -40,14 +40,26 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
 
     //add new registration to the registered table
     $scope.createReg = function(regID) {
-        console.log($scope.formData);
-        $http.post('/api/v1/todos', $scope.formData)
-            .success(function(data) {
-                $scope.formData = {}; //clears the form on the page
-                $scope.todoData = data; //puts data into a global?
-            })
-            .error(function(error) {
-                console.log('Error: ' + error);
-            });
+      console.log($scope.formData);
+      $http.post('/api/v1/todos', $scope.formData)
+        .success(function(data) {
+          $scope.formData = {}; //clears the form on the page
+          $scope.todoData = data; //puts data into a global?
+        })
+        .error(function(error) {
+          console.log('Error: ' + error);
+        });
     };
+
+    //look through the licenseplates, and send a message back if find it?
+    $scope.sendByPlate = function() {
+      $http.get('/api/v1/todos2/'+$scope.formData.plateSearch)
+        .success(function(data){
+          $scope.formData = {}; //clears the form of the page
+          console.log( data);
+        })
+        .error(function(error){
+          console.log('Error: ' + error);
+        })
+    }
 });
