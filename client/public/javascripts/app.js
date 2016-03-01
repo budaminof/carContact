@@ -1,6 +1,4 @@
-angular.module('nodeTodo', [])
-
-.controller('mainController', function($scope, $http) {
+var mainApp = angular.module('nodeTodo', []).controller('mainController', function($scope, $http) {
 
     $scope.formData = {}; //is the data shown/entered on the form
     $scope.todoData = {}; //is the data shown on the page?
@@ -46,15 +44,7 @@ angular.module('nodeTodo', [])
         $http.post('/api/v1/todos', $scope.formData)
             .success(function(data) {
                 $scope.formData = {}; //clears the form on the page
-                //$scope.regData = {}; //clears regData on the page
                 $scope.todoData = data; //puts data into a global?
-
-                //$scope.todoRegData = data; //*****
-                // console.log("create reg?");
-                // console.log(data);
-                // for(var i = 0; i < data.length; i++){
-                //   console.log(data[i]);
-                // }
             })
             .error(function(error) {
                 console.log('Error: ' + error);
