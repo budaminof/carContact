@@ -15,11 +15,13 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-
 router.post('/api/v1/todos', function(req, res) {
     var results = [];
     // Grab data from http request
-    var data = {text: req.body.text, complete: false};
+    // var pData = JSON.parse(req.body.text);
+    // console.log(pData);
+    var data = {firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email, phonenumber: req.body.phonenumber, licenseplate: req.body.licenseplate, complete: false};
+
     // Get a Postgres client from the connection pool
     pg.connect(conString, function(err, client, done) {
         // Handle connection errors
@@ -28,8 +30,11 @@ router.post('/api/v1/todos', function(req, res) {
           console.log(err);
           return res.status(500).json({ success: false, data: err});
         }
+
         // SQL Query > Insert Data
-        client.query("INSERT INTO items(text, complete) values($1, $2)", [data.text, data.complete]);
+        client.query("INSERT INTO registered(firstname, lastname, licenseplate, phonenumber) values($1, $2, $3, $4)", [data.firstname, data.lastname, data.licenseplate, data.phonenumber]);
+
+        /*
         // SQL Query > Select Data
         var query = client.query("SELECT * FROM items ORDER BY id ASC");
         // Stream results back one row at a time
@@ -40,9 +45,40 @@ router.post('/api/v1/todos', function(req, res) {
         query.on('end', function() {
             done();
             return res.json(results);
-        });
+        });*/
     });
 });
+
+// router.post('/api/v1/todos', function(req, res){
+//   //this is the results array that is returned once it has-success
+//   //been populated with rows of data from the database
+//   var results = [];
+//   //this is a new object consisting of all the text from the
+//   //body of the request and a boolean.
+//   //the boolean is stored in the database.
+//   var data = {text: req.body.text, complete: false  };
+//
+//   pg.connect(conString, function(err, client, done){
+//     //this handles any connection problems
+//     if(err){
+//       done(); //closes the connection
+//       console.log(err);
+//       //return a response
+//       return res.status(500).json({ success: false, data: err});
+//     }
+//     //use SQL to insert the data into the table
+//       client.query("INSERT INTO registered(firstname, lastname, licenseplate, phonenumber) values($1, $2, $3, $4)", ["testname1", "testname2", "tplate", "testphone"]);
+//
+//     query.on('row', function(row){
+//       results.push(row);
+//     });
+//     //event listener on end close the connection and return results to client
+//     query.on('end', function(){
+//       done();
+//       return res.json(results);
+//     });
+//   });
+// });
 
 router.get('/api/v1/todos', function(req, res) {
 

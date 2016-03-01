@@ -2,14 +2,14 @@ angular.module('nodeTodo', [])
 
 .controller('mainController', function($scope, $http) {
 
-    $scope.formData = {};
-    $scope.todoData = {};
+    $scope.formData = {}; //is the data shown/entered on the form
+    $scope.todoData = {}; //is the data shown on the page?
 
-    // Get all todos
+    // Get all the current entries in the database
     $http.get('/api/v1/todos')
         .success(function(data) {
             $scope.todoData = data;
-            console.log(data);
+            console.log("page setup " + data);
         })
         .error(function(error) {
             console.log('Error: ' + error);
@@ -42,13 +42,19 @@ angular.module('nodeTodo', [])
 
     //add new registration to the registered table
     $scope.createReg = function(regID) {
-        $http.post('/api/v1/todos', $scope.regData)
+        console.log($scope.formData);
+        $http.post('/api/v1/todos', $scope.formData)
             .success(function(data) {
-                $scope.regData = {};
-                //$scope.todoData = data;
-                $scope.todoRegData = data;
-                console.log("create reg?");
-                console.log(data);
+                $scope.formData = {}; //clears the form on the page
+                //$scope.regData = {}; //clears regData on the page
+                $scope.todoData = data; //puts data into a global?
+
+                //$scope.todoRegData = data; //*****
+                // console.log("create reg?");
+                // console.log(data);
+                // for(var i = 0; i < data.length; i++){
+                //   console.log(data[i]);
+                // }
             })
             .error(function(error) {
                 console.log('Error: ' + error);
