@@ -32,11 +32,11 @@ router.post(API_URL+'/todos', function(req, res) {
         }
 
         // SQL Query > Insert Data
-        client.query("INSERT INTO registered(firstname, lastname, licenseplate, phonenumber) values($1, $2, $3, $4)", [data.firstname, data.lastname, data.licenseplate, data.phonenumber]);
+        var query = client.query("INSERT INTO registered(firstname, lastname, licenseplate, phonenumber) values($1, $2, $3, $4)", [data.firstname, data.lastname, data.licenseplate, data.phonenumber]);
 
-        /*
+
         // SQL Query > Select Data
-        var query = client.query("SELECT * FROM items ORDER BY id ASC");
+        //= client.query("SELECT * FROM items ORDER BY id ASC");
         // Stream results back one row at a time
         query.on('row', function(row) {
             results.push(row);
@@ -45,7 +45,7 @@ router.post(API_URL+'/todos', function(req, res) {
         query.on('end', function() {
             done();
             return res.json(results);
-        });*/
+        });
     });
 });
 
@@ -88,7 +88,7 @@ router.get(API_URL+'/todos2/:plateNumber', function(req, res) {
         // SQL Query > Select Data
 
         var query = client.query({
-          text: 'SELECT * FROM registered WHERE licenseplate = $1',
+          text: 'SELECT phonenumber FROM registered WHERE licenseplate = $1',
           values: [data.plate]
         });
         console.log(query);

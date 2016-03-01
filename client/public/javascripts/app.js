@@ -27,15 +27,15 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
 
     // Create a new todo
     $scope.createTodo = function(todoID) {
-        $http.post('/api/v1/todos', $scope.formData)
-            .success(function(data) {
-                $scope.formData = {};
-                $scope.todoData = data;
-                console.log(data);
-            })
-            .error(function(error) {
-                console.log('Error: ' + error);
-            });
+      $http.post('/api/v1/todos', $scope.formData)
+        .success(function(data) {
+          $scope.formData = {};
+          $scope.todoData = data;
+          console.log(data);
+        })
+        .error(function(error) {
+          console.log('Error: ' + error);
+        });
     };
 
     //add new registration to the registered table
@@ -43,6 +43,7 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
       console.log($scope.formData);
       $http.post('/api/v1/todos', $scope.formData)
         .success(function(data) {
+          console.log("clear data?");
           $scope.formData = {}; //clears the form on the page
           $scope.todoData = data; //puts data into a global?
         })
@@ -56,7 +57,7 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
       $http.get('/api/v1/todos2/'+$scope.formData.plateSearch)
         .success(function(data){
           $scope.formData = {}; //clears the form of the page
-          console.log( data);
+          console.log( data[0].phonenumber );
         })
         .error(function(error){
           console.log('Error: ' + error);
