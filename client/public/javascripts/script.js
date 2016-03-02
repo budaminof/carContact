@@ -8,6 +8,7 @@ $(function(){
   $('.showRegisterForm').on('click', function(){
     $('.registrationForm').show();
     $('.showRegisterForm').hide();
+    $('.plateMessageGroup').hide();
   });
 
 });

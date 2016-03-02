@@ -102,30 +102,34 @@ router.get(API_URL+'/todos2/:plateNumber', function(req, res) {
         });
         console.log(query);
 
-        textClient.sms.messages.create({
-          to:'3035892321',
-          from: '+17204087635',
-          body: 'ahoy hoy! Testing Twilio and node.js'
-        }, function(error, message){
-          if(!error){
-            console.log("Success! The SID for this SMS message is: ");
-            console.log(message.sid);
-
-            console.log('Message sent on :');
-            console.log(message.dateCreated);
-          } else {
-            console.log('Oops! There was an error.');
-          }
-        });
-
         // Stream results back one row at a time
         query.on('row', function(row) {
           results.push(row);
         });
-        console.log("results:", results);
+
         // // After all data is returned, close connection and return results
         query.on('end', function() {
             done();
+            console.log("results:");
+            for(var i = 0; i < results.length; i++){
+              console.log(results[i].phonenumber);
+
+              textClient.sms.messages.create({
+                to: results[i].phonenumber.toString(),
+                from: '+17204087635',
+                body: 'ahoy hoy! Testing Twilio and node.js'
+              }, function(error, message){
+                if(!error){
+                  console.log("Success! The SID for this SMS message is: ");
+                  console.log(message.sid);
+
+                  console.log('Message sent on :');
+                  console.log(message.dateCreated);
+                } else {
+                  console.log('Oops! There was an error.');
+                }
+              });
+            }
             return res.json(results);
         });
     });
