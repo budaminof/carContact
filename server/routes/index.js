@@ -6,6 +6,15 @@ var path = require('path');
 //var conString = "postgres://cooperheinrichs:@localhost/todo";
 var conString = require(path.join(__dirname, '../', '../', 'config'));
 var client = new pg.Client(conString);
+
+var twilio = require('twilio');
+// Twilio Credentials
+var accountSid = 'AC498deede3787a484eae32dab29529bf3';
+var authToken = 'dde82c65a5d47252cbb110a7959cd693';
+// Create a new REST API client to make authenticated requests against
+// the twilio back end
+var textClient = new twilio.RestClient(accountSid, authToken);
+
 var API_URL = '/api/v1';
 
 
@@ -92,10 +101,28 @@ router.get(API_URL+'/todos2/:plateNumber', function(req, res) {
           values: [data.plate]
         });
         console.log(query);
+
+        textClient.sms.messages.create({
+          to:'3035892321',
+          from: '+17204087635',
+          body: 'ahoy hoy! Testing Twilio and node.js'
+        }, function(error, message){
+          if(!error){
+            console.log("Success! The SID for this SMS message is: ");
+            console.log(message.sid);
+
+            console.log('Message sent on :');
+            console.log(message.dateCreated);
+          } else {
+            console.log('Oops! There was an error.');
+          }
+        });
+
         // Stream results back one row at a time
         query.on('row', function(row) {
           results.push(row);
         });
+        console.log("results:", results);
         // // After all data is returned, close connection and return results
         query.on('end', function() {
             done();

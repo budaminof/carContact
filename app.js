@@ -4,12 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./server/routes/index');
 var users = require('./server/routes/users');
-
-
 var app = express();
+
+//require the Twilio module and create a REST client
+var twilio = require('twilio');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,8 +20,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './client', 'public')));
-
-
 app.use('/', routes);
 app.use('/users', users);
 
