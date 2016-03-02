@@ -3,9 +3,11 @@ $(function(){
 
   $('.registrationForm').hide();
 
+  $('.messages').hide();
+
   $('.showRegisterForm').on('click', function(){
     $('.registrationForm').show();
     $('.showRegisterForm').hide();
   });
-  
+
 });

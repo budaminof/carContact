@@ -44,6 +44,7 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
       $http.post('/api/v1/todos', $scope.formData)
         .success(function(data) {
           console.log("clear data?");
+          $('.messages').show();
           $scope.formData = {}; //clears the form on the page
           $scope.todoData = data; //puts data into a global?
         })

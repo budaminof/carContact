@@ -6,6 +6,6 @@ var conString = require(path.join(__dirname, '../', '../', 'config'));
 
 var client = new pg.Client(conString); //makes a new client connect to port 5432
 client.connect(); //connect the client to the db
-var query = client.query('CREATE TABLE Registered(id SERIAL PRIMARY KEY, firstName VARCHAR(255) not null, lastName VARCHAR(255) not null, licensePlate VARCHAR (6) not null, phoneNumber VARCHAR (10))'); //make a table
+var query = client.query('CREATE TABLE Registered(id SERIAL PRIMARY KEY, username VARCHAR (255) not null, password VARCHAR (255) not null, firstName VARCHAR(255) not null, lastName VARCHAR(255) not null, licensePlate VARCHAR (6) not null, state VARCHAR (2) not null, phoneNumber VARCHAR (10))'); //make a table
 
 query.on('end', function() { client.end(); });

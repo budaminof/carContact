@@ -3,6 +3,14 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h1{
+  color: white;
+}
+
+.lead {
+  color: #B7B7B7;
+}
+
 img.bg{
   /* Set rules to fill background */
   min-height: 100%;
@@ -28,9 +36,15 @@ ul {
   padding-left: 10px;
 }
 
+.navbar{
+  margin: -50px -50px 0px -50px;
+  padding: -10px;
+}
+
 .container {
+  margin-top: 50px;
   max-width: 400px;
-  background-color: #eeeeee;
+  background-color: rgba(28, 28, 28, 0.6);
   border: 1px solid black;
 }
 
