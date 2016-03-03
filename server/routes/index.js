@@ -29,7 +29,15 @@ router.post(API_URL+'/todos', function(req, res) {
     // Grab data from http request
     // var pData = JSON.parse(req.body.text);
     // console.log(pData);
-    var data = {firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email, phonenumber: req.body.phonenumber, licenseplate: req.body.licenseplate, complete: false};
+    var data = {
+      email: req.body.email,
+      password: req.body.password,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      licenseplate: req.body.licenseplate,
+      state: req.body.state,
+      phonenumber: req.body.phonenumber,
+      complete: false};
 
     // Get a Postgres client from the connection pool
     pg.connect(conString, function(err, client, done) {
@@ -41,7 +49,7 @@ router.post(API_URL+'/todos', function(req, res) {
         }
 
         // SQL Query > Insert Data
-        var query = client.query("INSERT INTO registered(firstname, lastname, licenseplate, phonenumber) values($1, $2, $3, $4)", [data.firstname, data.lastname, data.licenseplate, data.phonenumber]);
+        var query = client.query("INSERT INTO registered(email, password, firstname, lastname, licenseplate, state, phonenumber) values($1, $2, $3, $4, $5, $6, $7)", [data.email, data.password, data.firstname, data.lastname, data.licenseplate, data.state, data.phonenumber]);
 
 
         // SQL Query > Select Data
@@ -84,8 +92,10 @@ router.get(API_URL+'/todos', function(req, res) {
 });
 
 router.get(API_URL+'/todos2/:plateNumber', function(req, res) {
+// router.get(API_URL+'/todos2/:plateNumber/:state', function(req, res) {
     var results = [];
-    var data = { plate: req.params.plateNumber };
+    var data = { plate: req.params.plateNumber, state: req.params.state };
+
     // Get a Postgres client from the connection pool
     pg.connect(conString, function(err, client, done) {
         // Handle connection errors
@@ -97,6 +107,8 @@ router.get(API_URL+'/todos2/:plateNumber', function(req, res) {
         // SQL Query > Select Data
 
         var query = client.query({
+          // text: 'SELECT phonenumber FROM registered WHERE licenseplate = $1 AND state = $2',
+          // values: [data.plate, data.state]
           text: 'SELECT phonenumber FROM registered WHERE licenseplate = $1',
           values: [data.plate]
         });

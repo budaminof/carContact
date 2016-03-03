@@ -9,25 +9,27 @@
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" type="text/javascript"></script> -->
     <link href="stylesheets/style.css" rel="stylesheet" media="screen">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.12/angular.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   </head>
   <body ng-controller="mainController">
 
     <div class="mainBodyFadeOut">
-      <div class="logo">Car Contact</div>
+
 
       <div class="leftColumnImage">
         <span class="glyphicon glyphicon-comment glyphiconCenter"></span>
-        <span class="columnText">Send a message to a <br>registered car</span>
+        <span class="columnText">Send a message to a <br>car owner using their <br>license plate</span>
       </div>
 
       <div class="centerColumnImage">
+        <div class="logo">CAR CONTACT</div>
         <span class="glyphicon glyphicon-list-alt glyphiconCenter centerStartScreen"></span>
         <span class="columnText centerStartScreen">Sign up so you can <br>receive messages</span>
       </div>
 
       <div class="rightColumnImage">
         <span class=" glyphicon glyphicon-question-sign glyphiconCenter"></span>
-        <span class="columnText">Questions? Concerns? <br>Check out our FAQ</span>
+        <span class="columnText">Questions? Concerns? <br> Read our FAQ</span>
       </div>
 
       <footer> <a href="">About Us<a> | <a href="">Contact</a> | Longmont, CO 80501</footer>
@@ -35,21 +37,23 @@
 
     <div class="plateMessageGroup">
       <form>
-        <div class="form-group">
+        <div class="form-group plateAndStateForm">
           <input type="text" class="form-control input-lg" placeholder="Enter license plate..." ng-model="formData.plateSearch">
           <br>
           <input type="text" class="form-control input-lg" placeholder="Enter a state..." ng-model="formData.plateState">
+          <br>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="messagesButton">Send a Message</button>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="sendByPlate()">Send a Message</button>
-        <br>
       </form>
 
       <div class="todo-form">
         <form>
           <div class="form-group messages">
             <br>
-            <button type="submit" class="btn btn-default btn-lg btn-block" ng-click="createReg()">You're getting towed</button>
-            <button type="submit" class="btn btn-default btn-lg btn-block" ng-click="createReg()">Your meter is about to expire!</button>
+            <button type="submit" class="btn btn-default btn-lg btn-block" ng-click="sendByPlate('msg1')">You're getting towed</button>
+            <button type="submit" class="btn btn-default btn-lg btn-block" ng-click="sendByPlate('msg2')">Someone needs you to move your car</button>
+            <button type="submit" class="btn btn-default btn-lg btn-block" ng-click="sendByPlate('msg3')">Your meter is about to expire!</button>
+            <button type="submit" class="btn btn-default btn-lg btn-block" ng-click="sendByPlate('msg4')">There is a safety issue with your car</button>
             <br>
           </div>
         </form>
@@ -61,14 +65,13 @@
       <form>
         <br>
         <div class="form-group ">
-          <input type="text" class="form-control input-lg" placeholder="Enter username name..." ng-model="formData.username">
-          <input type="text" class="form-control input-lg" placeholder="Enter password name..." ng-model="formData.password">
+          <input type="text" class="form-control input-lg" placeholder="Enter your email..." ng-model="  formData.email">
+          <input type="text" class="form-control input-lg" placeholder="Enter password..." ng-model="formData.password">
           <input type="text" class="form-control input-lg" placeholder="Enter first name..." ng-model="formData.firstname">
-          <input type="text" class="form-control input-lg" placeholder="Enter lastname..." ng-model="formData.lastname">
-          <input type="text" class="form-control input-lg" placeholder="Enter email..." ng-model="formData.email">
-          <input type="text" class="form-control input-lg" placeholder="Enter phone number..." ng-model="formData.phonenumber">
+          <input type="text" class="form-control input-lg" placeholder="Enter last name..." ng-model="formData.lastname">
           <input type="text" class="form-control input-lg" placeholder="Enter license Plate..." ng-model="formData.licenseplate">
           <input type="text" class="form-control input-lg" placeholder="Enter the state..." ng-model="formData.state">
+          <input type="text" class="form-control input-lg" placeholder="Enter phone number..." ng-model="formData.phonenumber">
           <br>
           <button type="submit" class="btn btn-default btn-lg btn-block registerButton" ng-click="createReg()">Register</button>
           <br>

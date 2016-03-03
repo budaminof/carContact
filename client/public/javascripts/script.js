@@ -11,13 +11,18 @@ $(function(){
 
   $('.leftColumnImage').on('click', function(){
     $('.plateMessageGroup').show();
+    $('.plateAndStateForm').show();
     $('.mainBodyFadeOut').fadeOut(500);
-  })
+  });
+
+  $('#messagesButton').on('click', function(){
+    $('.messages').show();
+    $('.plateAndStateForm').hide();
+  });
 
   $('.centerColumnImage').on('click', function(){
     $('.registrationForm').show();
     $('.mainBodyFadeOut').fadeOut(500);
-    //$( '.registrationForm' ).dialog({ modal: true });
   });
 
   $('.rightColumnImage').on('click', function(){
