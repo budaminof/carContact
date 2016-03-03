@@ -1,6 +1,4 @@
 $(function(){
-  console.log('jquery script');
-
   $('.registrationForm').hide();
 
   $('.messages').hide();
