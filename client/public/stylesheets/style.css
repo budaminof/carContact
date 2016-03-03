@@ -4,7 +4,7 @@ body {
   margin: 0px;
   padding: 50px;
   font: 14px 'Raleway', serif;
-  background-image: url('https://vizualize.me/media/backgrounds/cschwartzcreative.png');
+  background-image: url('../images/bg.png');
 }
 
 .logo{
