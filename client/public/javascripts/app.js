@@ -4,14 +4,14 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
     $scope.todoData = {}; //is the data shown on the page?
 
     // Get all the current entries in the database on page setup
-    $http.get('/api/v1/todos')
-        .success(function(data) {
-            $scope.todoData = data;
-            console.log(data);
-        })
-        .error(function(error) {
-            console.log('Error: ' + error);
-        });
+    // $http.get('/api/v1/todos')
+    //     .success(function(data) {
+    //         $scope.todoData = data;
+    //         console.log(data);
+    //     })
+    //     .error(function(error) {
+    //         console.log('Error: ' + error);
+    //     });
 
     // Delete a todo
     $scope.deleteTodo = function(todoID) {
