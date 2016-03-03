@@ -28,13 +28,14 @@ $(function(){
     $('.mainBodyFadeOut').fadeOut(500);
   });
 
-  $('.cancelButtonRegister').on('click', function(){
-    $('.registrationForm').hide();
+  $('.cancelButtonMessages').on('click', function(){
+    $('.plateMessageGroup').hide();
+    $('.messages').hide();
     $('.mainBodyFadeOut').fadeIn(500);
   });
 
-  $('.cancelButtonMessages').on('click', function(){
-    $('.plateMessageGroup').hide();
+  $('.cancelButtonRegister').on('click', function(){
+    $('.registrationForm').hide();
     $('.mainBodyFadeOut').fadeIn(500);
   });
 

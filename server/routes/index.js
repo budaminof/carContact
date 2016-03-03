@@ -65,36 +65,25 @@ router.post(API_URL+'/todos', function(req, res) {
     });
 });
 
-
-// router.get(API_URL+'/todos', function(req, res) {
-//     var results = [];
-//     // Get a Postgres client from the connection pool
-//     pg.connect(conString, function(err, client, done) {
-//         // Handle connection errors
-//         if(err) {
-//           done();
-//           console.log(err);
-//           return res.status(500).json({ success: false, data: err});
-//         }
-//         // SQL Query > Select Data
-//         var query = client.query("SELECT * FROM items ORDER BY id ASC;");
-//         // Stream results back one row at a time
-//         query.on('row', function(row) {
-//             results.push(row);
-//         });
-//         // After all data is returned, close connection and return results
-//         query.on('end', function() {
-//             done();
-//             return res.json(results);
-//         });
-//     });
-// });
-
 router.get(API_URL+'/todos2/:plateNumber/:msg', function(req, res) {
 // router.get(API_URL+'/todos2/:plateNumber/:state', function(req, res) {
     var results = [];
-    console.log(req.query);
-    var data = { plate: req.params.plateNumber, msg: req.params.msg, state: req.params.state };
+    var data = { plate: req.params.plateNumber, state: req.params.state };
+    switch(req.params.msg){
+      case "msg1":
+        data.msg = "You're getting towed.";
+        break;
+      case "msg2":
+        data.msg = "Someone needs you to move your car.";
+        break;
+      case "msg3":
+        data.msg = "Your meter is about to expire.";
+        break;
+      case "msg4":
+        data.msg = "There is a safety issue with your car.";
+        break;
+    }
+    data.msg = data.msg + " This message was sent via Car Contact.";
 
     // Get a Postgres client from the connection pool
     pg.connect(conString, function(err, client, done) {
@@ -104,14 +93,17 @@ router.get(API_URL+'/todos2/:plateNumber/:msg', function(req, res) {
           console.log(err);
           return res.status(500).json({ success: false, data: err});
         }
-        // SQL Query > Select Data
 
+        // SQL Query > Select Data
         var query = client.query({
           // text: 'SELECT phonenumber FROM registered WHERE licenseplate = $1 AND state = $2',
           // values: [data.plate, data.state]
           text: 'SELECT phonenumber FROM registered WHERE licenseplate = $1',
           values: [data.plate]
         });
+        console.log("query: ");
+        console.log(data.plate.length);
+        console.log(data.plate);
         console.log(query);
 
         // Stream results back one row at a time
@@ -119,17 +111,16 @@ router.get(API_URL+'/todos2/:plateNumber/:msg', function(req, res) {
           results.push(row);
         });
 
-        // // After all data is returned, close connection and return results
+        // After all data is returned, close connection and return results
         query.on('end', function() {
             done();
-            console.log("results:");
             for(var i = 0; i < results.length; i++){
               console.log(results[i].phonenumber);
 
               textClient.sms.messages.create({
                 to: results[i].phonenumber.toString(),
                 from: '+17204087635',
-                body: 'ahoy hoy! Testing Twilio and node.js'
+                body: data.msg,
               }, function(error, message){
                 if(!error){
                   console.log("Success! The SID for this SMS message is: ");
@@ -146,63 +137,3 @@ router.get(API_URL+'/todos2/:plateNumber/:msg', function(req, res) {
         });
     });
 });
-
-// router.put(API_URL+'/todos/:todo_id', function(req, res) {
-//     var results = [];
-//     // Grab data from the URL parameters
-//     var id = req.params.todo_id;
-//     // Grab data from http request
-//     var data = {text: req.body.text, complete: req.body.complete};
-//     // Get a Postgres client from the connection pool
-//     pg.connect(conString, function(err, client, done) {
-//         // Handle connection errors
-//         if(err) {
-//           done();
-//           console.log(err);
-//           return res.status(500).send(json({ success: false, data: err}));
-//         }
-//         // SQL Query > Update Data
-//         client.query("UPDATE items SET text=($1), complete=($2) WHERE id=($3)", [data.text, data.complete, id]);
-//         // SQL Query > Select Data
-//         var query = client.query("SELECT * FROM items ORDER BY id ASC");
-//         // Stream results back one row at a time
-//         query.on('row', function(row) {
-//             results.push(row);
-//         });
-//         // After all data is returned, close connection and return results
-//         query.on('end', function() {
-//             done();
-//             return res.json(results);
-//         });
-//     });
-// });
-
-
-
-// router.delete(API_URL+'/todos/:todo_id', function(req, res) {
-//     var results = [];
-//     // Grab data from the URL parameters
-//     var id = req.params.todo_id;
-//     // Get a Postgres client from the connection pool
-//     pg.connect(conString, function(err, client, done) {
-//         // Handle connection errors
-//         if(err) {
-//           done();
-//           console.log(err);
-//           return res.status(500).json({ success: false, data: err});
-//         }
-//         // SQL Query > Delete Data
-//         client.query("DELETE FROM items WHERE id=($1)", [id]);
-//         // SQL Query > Select Data
-//         var query = client.query("SELECT * FROM items ORDER BY id ASC");
-//         // Stream results back one row at a time
-//         query.on('row', function(row) {
-//             results.push(row);
-//         });
-//         // After all data is returned, close connection and return results
-//         query.on('end', function() {
-//             done();
-//             return res.json(results);
-//         });
-//     });
-// });

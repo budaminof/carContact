@@ -56,16 +56,14 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
 
     //look through the licenseplates, and send a message back if find it?
     $scope.sendByPlate = function(msg) {
-      console.log(msg);
       if($scope.formData.plateSearch !== undefined && $scope.formData.plateState !== undefined){
         //$scope.formData.plateState
         $http.get('/api/v1/todos2/'+$scope.formData.plateSearch + '/' + msg)
           .success(function(data){
             console.log($scope);
-            $('.messages').show();
+            $('.messages').hide();
             $('.plateMessageGroup').hide();
             $('.mainBodyFadeOut').fadeIn(500);
-
             $scope.formData = {}; //clears the form of the page
             console.log( data[0].phonenumber );
           })
