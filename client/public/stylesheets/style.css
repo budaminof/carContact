@@ -27,8 +27,8 @@ body {
   background-size: 1000px;
   background-position: right;
   -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
+  transition: .5s;
+  -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
 }
 .leftColumnImage:hover{
   -webkit-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
@@ -46,8 +46,8 @@ body {
   background-image: url('../images/ColumnImage2.jpg');
   background-size: 1180px;
   background-position: 50% 50%;
-  transition: 1s;
-  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
+  transition: .5s;
+  -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
 }
 .centerColumnImage:hover{
   -webkit-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
@@ -66,8 +66,8 @@ body {
   background-image: url('http://www.wallpaperfo.com/thumbnails/detail/20120430/bmw%20cars%20photography%20bmw%20m3%20white%20cars%20bmw%20e92%20parking%20lot%20garage%201920x1200%20wallpaper_www.wallpaperfo.com_11.jpg');
   background-size: 1100px;
   background-position: center;
-  transition: 1s;
-  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
+  transition: .5s;
+  -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
 }
 .rightColumnImage:hover{
   -webkit-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
@@ -93,16 +93,18 @@ body {
 }
 
 .registrationForm {
+  padding: 10px;
   background-color: white;
   border: 1px solid white;
   border-radius: 15px;
   width: 31%;
   position: absolute;;
-  top: 15%;
+  top: 10%;
   left: 31%;
 }
 
 .plateMessageGroup {
+  padding: 10px;
   background-color: white;
   border: 1px solid white;
   border-radius: 15px;
@@ -113,6 +115,7 @@ body {
 }
 
 .FAQ {
+  padding: 10px;
   background-color: white;
   border: 1px solid white;
   border-radius: 15px;
