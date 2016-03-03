@@ -46,7 +46,7 @@ body {
   top: 3%;
   height: 90%;
   width: 23%;
-  background-image: url('https://static.pexels.com/photos/2996/parking-parking-lot-underground-garage.jpg');
+  background-image: url('../images/ColumnImage1.jpg');
   background-size: 1000px;
   background-position: right;
   transition: .5s;
@@ -66,7 +66,7 @@ body {
   border-top-right-radius: 40px;
   height: 90%;
   width: 23%;
-  background-image: url('https://www.wallpaperfo.com/thumbnails/detail/20120430/bmw%20cars%20photography%20bmw%20m3%20white%20cars%20bmw%20e92%20parking%20lot%20garage%201920x1200%20wallpaper_www.wallpaperfo.com_11.jpg');
+  background-image: url('../images/ColumnImage3.jpg');
   background-size: 1100px;
   background-position: 45% 20%;
   transition: .5s;
