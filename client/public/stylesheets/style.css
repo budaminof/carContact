@@ -1,10 +1,156 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('http://vizualize.me/media/backgrounds/cschwartzcreative.png');
 }
 
-h1{
+.logo{
+  position: absolute;
+  left: 36%;
+  top: 5%;
+  font-size: 55px;
+  z-index: 1;
+  font-family: sans-serif;
   color: white;
+  text-shadow: 0 0 5px black;
+}
+
+.leftColumnImage {
+  position: absolute;
+  left: 10%;
+  top: 3%;
+  background-color: red;
+  border-bottom-left-radius: 40px;
+  height: 90%;
+  width: 23%;
+  background-image: url('http://automtk.com/wp-content/uploads/2015/01/P90170864_highRes.jpg');
+  background-size: 1000px;
+  background-position: right;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
+}
+.leftColumnImage:hover{
+  -webkit-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+}
+
+.centerColumnImage {
+  position: absolute;
+  left: 35%;
+  top: 3%;
+  background-color: blue;
+  height: 90%;
+  width: 23%;
+  background-image: url('../images/ColumnImage2.jpg');
+  background-size: 1180px;
+  background-position: 50% 50%;
+  transition: 1s;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
+}
+.centerColumnImage:hover{
+  -webkit-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+}
+
+.rightColumnImage {
+  position: absolute;
+  left: 60%;
+  top: 3%;
+  background-color: yellow;
+  border-top-right-radius: 40px;
+  height: 90%;
+  width: 23%;
+  background-image: url('http://www.wallpaperfo.com/thumbnails/detail/20120430/bmw%20cars%20photography%20bmw%20m3%20white%20cars%20bmw%20e92%20parking%20lot%20garage%201920x1200%20wallpaper_www.wallpaperfo.com_11.jpg');
+  background-size: 1100px;
+  background-position: center;
+  transition: 1s;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
+}
+.rightColumnImage:hover{
+  -webkit-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 55px 3px rgba(0,0,0,0.75);
+}
+
+.glyphiconCenter {
+  top: 50%;
+  left: 40%;
+  font-size: 75px;
+  text-shadow: 0 0 5px black;
+  color: white;
+}
+
+.columnText {
+  position: relative;
+  top: 80%;
+  color: white;
+  font-size: 20px;
+  display:inline-block;
+  text-align: center;
+}
+
+.registrationForm {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 31%;
+  position: absolute;;
+  top: 15%;
+  left: 31%;
+}
+
+.plateMessageGroup {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 31%;
+  position: absolute;;
+  top: 15%;
+  left: 31%;
+}
+
+.FAQ {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 31%;
+  position: absolute;;
+  top: 15%;
+  left: 31%;
+  font-size: 24px;
+}
+
+.cancelButtonRegister {
+  position: relative;
+  left: 45%;
+  font-size: 40px;
+}
+.cancelButtonMessages {
+  position: relative;
+  left: 45%;
+  font-size: 40px;
+}
+.cancelButtonFAQ {
+  position: relative;
+  left: 45%;
+  font-size: 40px;
+}
+
+a {
+  color:#B7B7B7;
+  text-decoration: none;
+}
+
+a:visited{
+  color: #B7B7B7;
+}
+
+a:hover{
+  color: #B7B7B7;
+  text-decoration: none;
 }
 
 .lead {
@@ -27,28 +173,19 @@ img.bg{
   z-index: -1;
 }
 
-a {
-  color: #900000;
-}
-
 ul {
   list-style-type: none;
   padding-left: 10px;
 }
 
-.navbar{
-  margin: -50px -50px 0px -50px;
-  padding: -10px;
-}
-
-.container {
-  margin-top: 50px;
-  max-width: 400px;
-  background-color: rgba(28, 28, 28, 0.6);
-  border-radius: 5px;
-  border: 1px solid black;
-}
-
 .header {
   text-align: center;
+}
+
+footer {
+  position: absolute;;
+  top: 95%;
+  left: 75%;
+  text-decoration: none;
+  color: #B7B7B7;
 }
