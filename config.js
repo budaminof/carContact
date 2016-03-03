@@ -1,5 +1,5 @@
 //var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/todo';
 
-var conString = "postgres://cooperheinrichs:@localhost/todo";
+var conString = "postgres://jelniepednuqjd:l7Lso4hxZqpqGYHQHBC1hVl75_@ec2-54-83-3-38.compute-1.amazonaws.com:5432/ddoccuqthfn0l1";
 
 module.exports = conString;

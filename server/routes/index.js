@@ -14,7 +14,6 @@ var authToken = 'dde82c65a5d47252cbb110a7959cd693';
 // Create a new REST API client to make authenticated requests against
 // the twilio back end
 var textClient = new twilio.RestClient(accountSid, authToken);
-
 var API_URL = '/api/v1';
 
 
