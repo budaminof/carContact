@@ -59,7 +59,7 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
       console.log(msg);
       if($scope.formData.plateSearch !== undefined && $scope.formData.plateState !== undefined){
         //$scope.formData.plateState
-        $http.get('/api/v1/todos2/'+$scope.formData.plateSearch)
+        $http.get('/api/v1/todos2/'+$scope.formData.plateSearch + '/' + msg)
           .success(function(data){
             console.log($scope);
             $('.messages').show();

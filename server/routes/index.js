@@ -91,10 +91,11 @@ router.get(API_URL+'/todos', function(req, res) {
     });
 });
 
-router.get(API_URL+'/todos2/:plateNumber', function(req, res) {
+router.get(API_URL+'/todos2/:plateNumber/:msg', function(req, res) {
 // router.get(API_URL+'/todos2/:plateNumber/:state', function(req, res) {
     var results = [];
-    var data = { plate: req.params.plateNumber, state: req.params.state };
+    console.log(req.query);
+    var data = { plate: req.params.plateNumber, msg: req.params.msg, state: req.params.state };
 
     // Get a Postgres client from the connection pool
     pg.connect(conString, function(err, client, done) {
