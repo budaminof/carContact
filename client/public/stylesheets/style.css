@@ -10,17 +10,25 @@ body {
   background-image: url('../images/bg.png');
 }
 
+#ccLogo{
+  position: absolute;
+  width: 300px;
+  left: 5%;
+}
 .logo{
   position: absolute;
-  left: 3%;
+  left: 0%;
   top: 3%;
   font-size: 40px;
   z-index: 1;
   font-family: 'Raleyway' serif;
   color: white;
   text-shadow: 0 0 5px black;
-  border: .5px solid white;
-  padding: 10px;
+  /*border: 1px solid white;*/
+
+  width: 100%;
+  height: 25.5%;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .leftColumnImage {
@@ -30,7 +38,7 @@ body {
   border-bottom-left-radius: 40px;
   height: 90%;
   width: 23%;
-  background-image: url('../images/ColumnImage2.jpg');
+  background-image: url('../images/ColumnImage1.jpg');
   background-size: 1180px;
   background-position: 75% 50%;
   -webkit-transition: 1s;
@@ -49,9 +57,9 @@ body {
   top: 3%;
   height: 90%;
   width: 23%;
-  background-image: url('../images/ColumnImage1.jpg');
-  background-size: 1000px;
-  background-position: right;
+  background-image: url('../images/ColumnImage2.jpg');
+  background-size:1180px;
+  background-position:  75% 50%;
   transition: .5s;
   -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));
 }
@@ -125,7 +133,7 @@ body {
 }
 
 .registrationError{
-  
+
 }
 
 .FAQHeader {
