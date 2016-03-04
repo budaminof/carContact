@@ -5,17 +5,15 @@ $(function(){
 
   $('.plateMessageGroup').hide();
 
+  $('.plateMessageError').hide();
+  $('.registrationError').hide();
+
   $('.FAQ').hide();
 
   $('.leftColumnImage').on('click', function(){
     $('.plateMessageGroup').show();
     $('.plateAndStateForm').show();
     $('.mainBodyFadeOut').fadeOut(500);
-  });
-
-  $('#messagesButton').on('click', function(){
-    $('.messages').show();
-    $('.plateAndStateForm').hide();
   });
 
   $('.centerColumnImage').on('click', function(){
@@ -37,6 +35,7 @@ $(function(){
   $('.cancelButtonRegister').on('click', function(){
     $('.registrationForm').hide();
     $('.mainBodyFadeOut').fadeIn(500);
+    $('.registrationError').hide();
   });
 
   $('.cancelButtonFAQ').on('click', function(){

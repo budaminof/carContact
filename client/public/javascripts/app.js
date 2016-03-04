@@ -3,45 +3,9 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
     $scope.formData = {}; //is the data shown/entered on the form
     $scope.todoData = {}; //is the data shown on the page?
 
-    // Get all the current entries in the database on page setup
-    // $http.get('/api/v1/todos')
-    //     .success(function(data) {
-    //         $scope.todoData = data;
-    //         console.log(data);
-    //     })
-    //     .error(function(error) {
-    //         console.log('Error: ' + error);
-    //     });
-
-    // Delete a todo
-    $scope.deleteTodo = function(todoID) {
-      $http.delete('/api/v1/todos/' + todoID)
-      .success(function(data) {
-        $scope.todoData = data;
-        console.log(data);
-      })
-      .error(function(data) {
-        console.log('Error: ' + data);
-      });
-    };
-
-    // Create a new todo
-    $scope.createTodo = function(todoID) {
-      $http.post('/api/v1/todos', $scope.formData)
-        .success(function(data) {
-          $scope.formData = {};
-          $scope.todoData = data;
-          console.log(data);
-        })
-        .error(function(error) {
-          console.log('Error: ' + error);
-        });
-    };
-
     //add new registration to the registered table
     $scope.createReg = function(regID) {
-
-      if(!jQuery.isEmptyObject($scope.formData)){
+      if( Object.keys($scope.formData).length == 7 ){
         $http.post('/api/v1/todos', $scope.formData)
           .success(function(data) {
             console.log("registration successful");
@@ -51,8 +15,22 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
           .error(function(error) {
             console.log('Error: ' + error);
           });
+      } else {
+        //show a message to the user
+        console.log("Client side error message");
+        $('.registrationError').show();
       }
     };
+
+    $('#messagesButton').on('click', function(){
+      if($scope.formData.plateSearch !== undefined && $scope.formData.plateState !== undefined ){
+        $('.messages').show();
+        $('.plateAndStateForm').hide();
+        $('.plateMessageError').hide();
+      } else {
+        $('.plateMessageError').show();
+      }
+    });
 
     //look through the licenseplates, and send a message back if find it?
     $scope.sendByPlate = function(msg) {
@@ -70,6 +48,9 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
           .error(function(error){
             console.log('Error: ' + error);
           })
+      } else {
+        //show an error message to the user
+        $('.plateMessageError').show();
       }
     }
 });
