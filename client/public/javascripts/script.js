@@ -1,4 +1,16 @@
 $(function(){
+
+  if(Object.keys(localStorage).length > 0 ){
+    for(var key in localStorage){
+      if(key == "email"){$('#emailForm')[0].value = localStorage[key];}
+      if(key == "firstname"){$('#firstnameForm')[0].value = localStorage[key];}
+      if(key == "lastname"){$('#lastnameForm')[0].value = localStorage[key];}
+      if(key == "plate"){$('#licenseplateForm')[0].value = localStorage[key];}
+      if(key == "state"){$('#stateForm')[0].value = localStorage[key];}
+      if(key == "phone"){$('#phonenumberForm')[0].value = localStorage[key];}
+    }
+  }
+
   $('.registrationForm').hide();
 
   $('.messages').hide();
@@ -36,6 +48,19 @@ $(function(){
     $('.registrationForm').hide();
     $('.mainBodyFadeOut').fadeIn(500);
     $('.registrationError').hide();
+    var email = $('#emailForm')[0].value;
+    var firstName = $('#firstnameForm')[0].value;
+    var lastName = $('#lastnameForm')[0].value;
+    var plate = $('#licenseplateForm')[0].value;
+    var state = $('#stateForm')[0].value;
+    var phone = $('#phonenumberForm')[0].value;
+    if(email){localStorage.setItem("email", email);}
+    if(firstName){localStorage.setItem("firstname", firstName);}
+    if(lastName){localStorage.setItem("lastname", lastName);}
+    if(plate){localStorage.setItem("plate", plate);}
+    if(state){localStorage.setItem("state", state);}
+    if(phone){localStorage.setItem("phone", phone);}
+
   });
 
   $('.cancelButtonFAQ').on('click', function(){

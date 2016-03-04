@@ -11,6 +11,10 @@ var mainApp = angular.module('nodeTodo', []).controller('mainController', functi
             console.log("registration successful");
             $scope.formData = {}; //clears the form on the page
             $scope.todoData = data; //puts data into a global?
+            localStorage.clear();
+            $('.registrationForm').hide();
+            $('.mainBodyFadeOut').fadeIn(500);
+            $('.registrationError').hide();
           })
           .error(function(error) {
             console.log('Error: ' + error);
