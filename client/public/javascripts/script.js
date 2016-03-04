@@ -92,8 +92,9 @@ $(function(){
 
   //********* REGISTRATION ***************//
   $('#emailForm').on('blur', function(){
-    var plate = $('#emailForm')[0].value;
-    if(plate == ""){
+    var regexp = /(.+)@(.+){2,}\.(.+){2,}/;
+    var email = $('#emailForm')[0].value;
+    if(email == "" || !regexp.test(email)){
       $('#emailForm').css("border", "1px solid red");
     } else {
       $('#emailForm').css("border", "");
@@ -146,8 +147,9 @@ $(function(){
   });
 
   $('#phonenumberForm').on('blur', function(){
-    var plate = $('#phonenumberForm')[0].value;
-    if(plate == ""){
+    var regex = /^[0-9]*$/;
+    var phoneNumber = $('#phonenumberForm')[0].value;
+    if(phoneNumber == "" || phoneNumber.length < 7 || !regex.test(phoneNumber)){
       $('#phonenumberForm').css("border", "1px solid red");
     } else {
       $('#phonenumberForm').css("border", "");
