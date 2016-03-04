@@ -36,9 +36,9 @@
     <div class="plateMessageGroup">
       <form>
         <div class="form-group plateAndStateForm">
-          <input type="text" class="form-control input-lg" placeholder="Enter license plate..." ng-model="formData.plateSearch">
+          <input type="text" class="form-control input-lg" placeholder="Enter license plate..." ng-model="formData.plateSearch" id="plateSearch">
           <br>
-          <input type="text" class="form-control input-lg" placeholder="Enter a state..." ng-model="formData.plateState">
+          <input type="text" class="form-control input-lg" placeholder="Enter a state..." ng-model="formData.plateState" id="plateState">
           <br>
           <button type="submit" class="btn btn-primary btn-lg btn-block" id="messagesButton">Send a Message</button>
         </div>
@@ -63,13 +63,13 @@
       <form>
         <br>
         <div class="form-group ">
-          <input type="text" class="form-control input-lg" placeholder="Enter your email..." ng-model="  formData.email">
-          <input type="text" class="form-control input-lg" placeholder="Enter password..." ng-model="formData.password">
-          <input type="text" class="form-control input-lg" placeholder="Enter first name..." ng-model="formData.firstname">
-          <input type="text" class="form-control input-lg" placeholder="Enter last name..." ng-model="formData.lastname">
-          <input type="text" class="form-control input-lg" placeholder="Enter license Plate..." ng-model="formData.licenseplate">
-          <input type="text" class="form-control input-lg" placeholder="Enter the state..." ng-model="formData.state">
-          <input type="text" class="form-control input-lg" placeholder="Enter phone number..." ng-model="formData.phonenumber">
+          <input type="text" class="form-control input-lg" placeholder="Enter your email..." ng-model="formData.email" id="emailForm">
+          <input type="text" class="form-control input-lg" placeholder="Enter password..." ng-model="formData.password" id="passwordForm">
+          <input type="text" class="form-control input-lg" placeholder="Enter first name..." ng-model="formData.firstname" id="firstnameForm">
+          <input type="text" class="form-control input-lg" placeholder="Enter last name..." ng-model="formData.lastname" id="lastnameForm">
+          <input type="text" class="form-control input-lg" placeholder="Enter license Plate..." ng-model="formData.licenseplate" id="licenseplateForm">
+          <input type="text" class="form-control input-lg" placeholder="Enter the state..." ng-model="formData.state" id="stateForm">
+          <input type="text" class="form-control input-lg" placeholder="Enter phone number..." ng-model="formData.phonenumber" id="phonenumberForm">
           <br>
           <button type="submit" class="btn btn-default btn-lg btn-block registerButton" ng-click="createReg()">Register</button>
           <br>
