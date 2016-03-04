@@ -1,4 +1,4 @@
-var mainApp = angular.module('nodeTodo', []).controller('mainController', function($scope, $http) {
+var mainApp = angular.module('CCController', []).controller('mainController', function($scope, $http) {
 
     $scope.formData = {}; //is the data shown/entered on the form
     $scope.todoData = {}; //is the data shown on the page?
